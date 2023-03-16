@@ -18,7 +18,7 @@ import (
 func main() {
     rgb := color.Green.GetRGB()
     fmt.Printf("\033[38;2;%d;%d;%dmGreen line\033[0m\n", rgb.Red, rgb.Green, rgb.Blue)
-    fmt.Printf("Green with hex %s has next rgb struct %#v and int %d", color.Green.HexString(), rgb, color.Green)
+    fmt.Printf("Green with hex %s has next rgb: %v and int %d", color.Green.HexString(), rgb, color.Green)
 }
 ```
 
