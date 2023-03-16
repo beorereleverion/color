@@ -65,3 +65,12 @@ func TestParseRGB(t *testing.T) {
 		t.Error("Expected an error, but got none")
 	}
 }
+
+func TestRGBString(t *testing.T) {
+	r := RGB{Red: 255, Green: 0, Blue: 128}
+	expected := "255,0,128"
+	result := r.String()
+	if result != expected {
+		t.Errorf("RGB.String() returned unexpected result: got %s, expected %s", result, expected)
+	}
+}

@@ -25,6 +25,10 @@ func (c Color) GetRGB() RGB {
 	return RGB{r, g, b}
 }
 
+func (r RGB) String() string {
+	return fmt.Sprintf("%d,%d,%d", r.Red, r.Green, r.Blue)
+}
+
 func RGBToColor(rgb RGB) Color {
 	color := int(rgb.Red)<<16 | int(rgb.Green)<<8 | int(rgb.Blue)
 	return Color(color)
