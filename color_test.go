@@ -74,3 +74,10 @@ func TestRGBString(t *testing.T) {
 		t.Errorf("RGB.String() returned unexpected result: got %s, expected %s", result, expected)
 	}
 }
+
+func TestColorInt(t *testing.T) {
+	c := Color(0xff0000)
+	if c.Int() != 16711680 {
+		t.Errorf("Expected 16711680, but got %d", c.Int())
+	}
+}

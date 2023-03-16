@@ -18,6 +18,10 @@ func (c Color) HexString() string {
 	return fmt.Sprintf("%X", c)
 }
 
+func (c Color) Int() int {
+	return int(c)
+}
+
 func (c Color) GetRGB() RGB {
 	r := uint8((c >> 16) & 0xFF)
 	g := uint8((c >> 8) & 0xFF)
