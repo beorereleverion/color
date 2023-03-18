@@ -2,8 +2,10 @@ package color
 
 import (
 	"fmt"
+	"math/rand"
 	"strconv"
 	"strings"
+	"time"
 )
 
 type Color int
@@ -59,4 +61,12 @@ func ParseRGB(rgbStr string) (Color, error) {
 
 	color := RGBToColor(RGB{Red: uint8(r), Green: uint8(g), Blue: uint8(b)})
 	return color, nil
+}
+
+func RandomColor() Color {
+	rnd := rand.New(rand.NewSource(time.Now().UnixNano()))
+	r := uint8(rnd.Intn(256))
+	g := uint8(rnd.Intn(256))
+	b := uint8(rnd.Intn(256))
+	return RGBToColor(RGB{r, g, b})
 }

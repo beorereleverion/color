@@ -81,3 +81,10 @@ func TestColorInt(t *testing.T) {
 		t.Errorf("Expected 16711680, but got %d", c.Int())
 	}
 }
+
+func TestRandomColor(t *testing.T) {
+	color := RandomColor()
+	if color.Int() < 0 || color.Int() > 0xFFFFFF {
+		t.Errorf("RandomColor() returned invalid color: %v", color)
+	}
+}
