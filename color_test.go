@@ -88,3 +88,23 @@ func TestRandomColor(t *testing.T) {
 		t.Errorf("RandomColor() returned invalid color: %v", color)
 	}
 }
+
+func TestParseHexColor(t *testing.T) {
+    // Test valid hex color
+    hex := "#FF0000"
+    expected := RGB{Red: 255, Green: 0, Blue: 0}
+    color, err := ParseHexColor(hex)
+    if err != nil {
+        t.Errorf("Unexpected error: %v", err)
+    }
+    if color != RGBToColor(expected) {
+        t.Errorf("Expected color %v but got %v", expected, color)
+    }
+
+    // Test invalid hex color
+    hex = "00FF"
+    _, err = ParseHexColor(hex)
+    if err == nil {
+        t.Error("Expected error for invalid hex color but got nil")
+    }
+}

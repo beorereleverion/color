@@ -70,3 +70,33 @@ func RandomColor() Color {
 	b := uint8(rnd.Intn(256))
 	return RGBToColor(RGB{r, g, b})
 }
+
+func ParseHexColor(hexStr string) (Color, error) {
+    hexStr = strings.TrimPrefix(hexStr, "#")
+
+    if len(hexStr) != 6 {
+        return 0, fmt.Errorf("invalid hex color format: %s", hexStr)
+    }
+
+    rgb := RGB{}
+
+    r, err := strconv.ParseUint(hexStr[0:2], 16, 8)
+    if err != nil {
+        return 0, fmt.Errorf("invalid red component: %s", hexStr[0:2])
+    }
+    rgb.Red = uint8(r)
+
+    g, err := strconv.ParseUint(hexStr[2:4], 16, 8)
+    if err != nil {
+        return 0, fmt.Errorf("invalid green component: %s", hexStr[2:4])
+    }
+    rgb.Green = uint8(g)
+
+    b, err := strconv.ParseUint(hexStr[4:6], 16, 8)
+    if err != nil {
+        return 0, fmt.Errorf("invalid blue component: %s", hexStr[4:6])
+    }
+    rgb.Blue = uint8(b)
+
+    return RGBToColor(rgb), nil
+}
